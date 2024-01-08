@@ -1,6 +1,7 @@
 package com.example.cicd
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cicd.databinding.ActivityMainBinding
 import com.microsoft.appcenter.AppCenter
@@ -19,5 +20,33 @@ class MainActivity : AppCompatActivity() {
             Analytics::class.java,
             Crashes::class.java
         )
+        AppCenter.setLogLevel(Log.VERBOSE)
+        binding.calculateButton.setOnClickListener {
+            try {
+                val interestRate = binding.interestEditText.text.toString().toFloat()
+                val currentAge = binding.ageEditText.text.toString().toInt()
+                val retirementAge = binding.retirementEditText.text.toString().toInt()
+                val monthlySavings = binding.monthlySavingsEditText.text.toString().toFloat()
+                val currentSavings = binding.currentSavingsEditText.text.toString().toFloat()
+
+                val properties: HashMap<String, String> = HashMap()
+                properties["interest_rate"] = interestRate.toString()
+                properties["current_age"] = currentAge.toString()
+                properties["retirement_age"] = retirementAge.toString()
+                properties["monthly_savings"] = monthlySavings.toString()
+                properties["current_savings"] = currentSavings.toString()
+
+                if (interestRate <= 0f) {
+                    Analytics.trackEvent("wrong_interest_rate", properties)
+                }
+
+                if (retirementAge <= currentAge) {
+                    Analytics.trackEvent("wrong_age", properties)
+                }
+            } catch (exception: Exception) {
+                Analytics.trackEvent(exception.message)
+            }
+
+        }
     }
 }
