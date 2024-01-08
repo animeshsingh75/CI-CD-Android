@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         AppCenter.start(
             application,
-            "3abf3928-cdf3-4312-8245-d1e87b69ec76",
+            "bb5fd39f-6ba3-4c46-9203-23757575ef28",
             Analytics::class.java,
             Crashes::class.java
         )
