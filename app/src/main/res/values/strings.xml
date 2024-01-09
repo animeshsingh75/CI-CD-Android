@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CICD</string>
+
+    <string name="calculate">Calculate</string>
+    <string name="current_savings">Current savings</string>
+    <string name="planned_retirement_age">Planned retirement age</string>
+    <string name="your_current_age">Your current age</string>
+    <string name="yearly_interest_rate">Yearly interest rate</string>
+    <string name="monthly_savings">Monthly savings</string>
+
+    <string name="future_savings">
+    At the current rate of %1$s%%, saving $%2$s a month and current savings of $%3$s you will have $%4$s by %5$d.
+</string>
 </resources>
