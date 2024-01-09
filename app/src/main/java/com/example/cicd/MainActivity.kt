@@ -7,6 +7,8 @@ import com.example.cicd.databinding.ActivityMainBinding
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import kotlin.math.pow
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -43,10 +45,42 @@ class MainActivity : AppCompatActivity() {
                 if (retirementAge <= currentAge) {
                     Analytics.trackEvent("wrong_age", properties)
                 }
+
+                val futureSavings = calculateRetirement(
+                    interestRate,
+                    currentSavings,
+                    monthlySavings,
+                    (retirementAge - currentAge) * 12
+                )
+                val resultText = getString(
+                    R.string.future_savings,
+                    "%.2f".format(interestRate),
+                    "%.2f".format(monthlySavings),
+                    "%.2f".format(currentSavings),
+                    "%.2f".format(futureSavings),
+                    retirementAge
+                )
+
+                binding.resultTextView.text = resultText
             } catch (exception: Exception) {
                 Analytics.trackEvent(exception.message)
             }
 
         }
+    }
+
+    private fun calculateRetirement(
+        interestRate: Float,
+        currentSavings: Float,
+        monthly: Float,
+        numMonths: Int
+    ): Float {
+        var futureSavings = currentSavings * (1 + (interestRate / 100 / 12)).pow(numMonths)
+
+        for (i in 1..numMonths) {
+            futureSavings += (monthly * (1 + (interestRate / 100 / 12)).pow(i))
+        }
+
+        return futureSavings
     }
 }
