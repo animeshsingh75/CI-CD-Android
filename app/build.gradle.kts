@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cicd"
+    namespace = "com.animesh.cicd"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.cicd"
+        applicationId = "com.animesh.cicd"
         minSdk = 28
         targetSdk = 34
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
