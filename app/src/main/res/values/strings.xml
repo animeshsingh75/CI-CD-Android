@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CICD</string>
 
-    <string name="calculate">Calculate</string>
+    <string name="calculate">Calculate Retirement Money</string>
     <string name="current_savings">Current savings</string>
     <string name="planned_retirement_age">Planned retirement age</string>
     <string name="your_current_age">Your current age</string>
