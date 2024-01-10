@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cicd"
+    namespace = "com.animesh.cicd"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.cicd"
+        applicationId = "com.animesh.cicd"
         minSdk = 28
         targetSdk = 34
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -52,4 +52,5 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("com.microsoft.appcenter:espresso-test-extension:1.4")
 }
